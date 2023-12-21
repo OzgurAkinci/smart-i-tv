@@ -22,13 +22,8 @@ export default class Home extends Component {
                             Your mac address: {this.state.macAddress}
                         </div>
                         <div className='col-md-12 title text-center text-muted'>SMART-i TV</div>
-                        <div className='col-md-12 posters'>
-                            <Poster focusPath='focusable-poster-1' title={'Dunkirk_Film_poster'}
-                                    src={'https://upload.wikimedia.org/wikipedia/en/1/15/Dunkirk_Film_poster.jpg'}/>
-                            <Poster focusPath='focusable-poster-2' title={'Interstellar 1'}
-                                    src={'https://upload.wikimedia.org/wikipedia/en/b/bc/Interstellar_film_poster.jpg'}/>
-                            <Poster focusPath='focusable-poster-3' title={'Interstellar 2'}
-                                    src={'https://upload.wikimedia.org/wikipedia/en/b/bc/Interstellar_film_poster.jpg'}/>
+                        <div className='col-md-12'>
+
                         </div>
 
                         <Footer {...this.props} currentFocusPath={this.props.currentFocusPath}/>
