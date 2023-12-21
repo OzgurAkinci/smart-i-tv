@@ -27,8 +27,6 @@ export class Footer extends Component {
         this.props.history.push(path);
     };
 
-
-
     render() {
         return(
             <div className='footer'>

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {Footer} from "./components/Footer/Footer";
-import {Poster} from "./components/Poster/Poster"
 
 
 export default class Home extends Component {
