@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
-import ReactTV from 'react-tv';
-import {withFocusable, withNavigation} from 'react-tv-navigation';
 import {Footer} from "./components/Footer/Footer";
-import {Poster} from "./components/Poster/Poster";
+import {Poster} from "./components/Poster/Poster"
 
 
-export default class ChannelCategories extends Component {
+export default class Home extends Component {
 
     constructor(props) {
         super(props);
@@ -40,7 +38,3 @@ export default class ChannelCategories extends Component {
         );
     }
 }
-
-const AppWithNavigation = withNavigation(ChannelCategories)
-
-ReactTV.render(<AppWithNavigation/>, document.querySelector('#root'));

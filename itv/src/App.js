@@ -1,46 +1,30 @@
-import React from 'react';
-import ReactTV from 'react-tv';
-import {withNavigation} from 'react-tv-navigation';
-import {Footer} from "./components/Footer/Footer";
-import {Poster} from "./components/Poster/Poster"
+import React from "react";
+import ReactTV, { renderOnAppLoaded } from "react-tv";
+import { withFocusable, withNavigation } from "react-tv-navigation";
+import Home from "./Home";
+import ChannelCategories from "./ChannelCategories";
+import {
+    BrowserRouter as Router,
+    Route,
+    Link,
+    Switch,
+    Redirect
+} from "react-router-dom";
 
-
-class App extends React.Component {
-
-    constructor(props) {
-        super(props);
-        this.state = {
-            macAddress: '0.0.0.0'
-        };
-    }
-
-    render() {
-        return (
-            <div className={'container-fluid'}>
-                <div className={'row'}>
-                    <div className={'container-itv'}>
-                        <div className={'col-md-12 top-notification-area text-right pt-2 text-muted'}>
-                            You're focused on: {this.props.currentFocusPath},
-                            Your mac address: {this.state.macAddress}
-                        </div>
-                        <div className='col-md-12 title text-center text-muted'>SMART-i TV</div>
-                        <div className='col-md-12 posters'>
-                            <Poster focusPath='focusable-poster-1' title={'Dunkirk_Film_poster'}
-                                    src={'https://upload.wikimedia.org/wikipedia/en/1/15/Dunkirk_Film_poster.jpg'}/>
-                            <Poster focusPath='focusable-poster-2' title={'Interstellar 1'}
-                                    src={'https://upload.wikimedia.org/wikipedia/en/b/bc/Interstellar_film_poster.jpg'}/>
-                            <Poster focusPath='focusable-poster-3' title={'Interstellar 2'}
-                                    src={'https://upload.wikimedia.org/wikipedia/en/b/bc/Interstellar_film_poster.jpg'}/>
-                        </div>
-
-                        <Footer/>
-                    </div>
-                </div>
+function App({ currentFocusPath }) {
+    return (
+        <Router>
+            <div>
+                <Switch>
+                    <Route exact path="/" render={(props) => <Home {...props} currentFocusPath={currentFocusPath} />}  />
+                    <Route path="/channels" render={(props) => <ChannelCategories {...props} currentFocusPath={currentFocusPath} />}/>
+                    <Route path="/ChannelCategories" render={(props) => <ChannelCategories {...props} currentFocusPath={currentFocusPath} />}/>
+                </Switch>
             </div>
-        );
-    }
+        </Router>
+    );
 }
 
-const AppWithNavigation = withNavigation(App)
+const AppWithNavigation = renderOnAppLoaded(withNavigation(App));
 
-ReactTV.render(<AppWithNavigation/>, document.querySelector('#root'));
+ReactTV.render(<AppWithNavigation />, document.querySelector("#root"));
